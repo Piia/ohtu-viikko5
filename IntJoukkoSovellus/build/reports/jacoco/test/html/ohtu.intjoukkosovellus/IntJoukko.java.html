@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fi"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>IntJoukko.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IntJoukkoSovellus</a> &gt; <a href="index.source.html" class="el_package">ohtu.intjoukkosovellus</a> &gt; <span class="el_source">IntJoukko.java</span></div><h1>IntJoukko.java</h1><pre class="source lang-java linenums">package ohtu.intjoukkosovellus;
+
+public class IntJoukko {
+
+    private int kasvatuskoko;     // Uusi taulukko on tämän verran vanhaa suurempi.
+    private int[] joukko;      // Joukon luvut säilytetään taulukon alkupäässä. 
+    private int alkioidenLkm;    // Tyhjässä joukossa alkioiden_määrä on nolla. 
+
+<span class="fc" id="L9">    public IntJoukko(int kasvatus) {</span>
+<span class="fc bfc" id="L10" title="All 2 branches covered.">        if (kasvatus &lt; 0) {</span>
+<span class="fc" id="L11">            this.kasvatuskoko = 5;</span>
+        } else {
+<span class="fc" id="L13">            this.kasvatuskoko = kasvatus;</span>
+        }
+<span class="fc" id="L15">        this.joukko = new int[kasvatuskoko];</span>
+<span class="fc bfc" id="L16" title="All 2 branches covered.">        for (int i = 0; i &lt; joukko.length; i++) {</span>
+<span class="fc" id="L17">            joukko[i] = 0;</span>
+        }
+<span class="fc" id="L19">        this.alkioidenLkm = 0;</span>
+<span class="fc" id="L20">    }</span>
+
+<span class="fc" id="L22">    public IntJoukko() {</span>
+<span class="fc" id="L23">        this.kasvatuskoko = 5;</span>
+<span class="fc" id="L24">        this.joukko = new int[kasvatuskoko];</span>
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        for (int i = 0; i &lt; joukko.length; i++) {</span>
+<span class="fc" id="L26">            joukko[i] = 0;</span>
+        }
+<span class="fc" id="L28">        this.alkioidenLkm = 0;</span>
+<span class="fc" id="L29">    }</span>
+
+    public int getKasvatuskoko() {
+<span class="fc" id="L32">        return this.kasvatuskoko;</span>
+    }
+
+    public boolean lisaa(int luku) {
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        if (alkioidenLkm == 0) {</span>
+<span class="fc" id="L37">            joukko[0] = luku;</span>
+<span class="fc" id="L38">            alkioidenLkm++;</span>
+<span class="fc" id="L39">            return true;</span>
+        }
+
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        if (!lukuOnJoukossa(luku)) {</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">            if (alkioidenLkm == joukko.length) {</span>
+<span class="fc" id="L44">                kasvataTaulukkoa();</span>
+            }
+<span class="fc" id="L46">            joukko[alkioidenLkm] = luku;</span>
+<span class="fc" id="L47">            alkioidenLkm++;</span>
+<span class="fc" id="L48">            return true;</span>
+        }
+<span class="fc" id="L50">        return false;</span>
+    }
+
+    public boolean lukuOnJoukossa(int luku) {
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        return luvunIndeksi(luku) != -1;</span>
+    }
+
+    public boolean poista(int luku) {
+<span class="fc" id="L58">        int kohta = luvunIndeksi(luku);</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        if (kohta == -1) {</span>
+<span class="fc" id="L60">            return false;</span>
+        }
+        int apu;
+<span class="fc bfc" id="L63" title="All 2 branches covered.">        for (int j = kohta; j &lt; alkioidenLkm - 1; j++) {</span>
+<span class="fc" id="L64">            apu = joukko[j];</span>
+<span class="fc" id="L65">            joukko[j] = joukko[j + 1];</span>
+<span class="fc" id="L66">            joukko[j + 1] = apu;</span>
+        }
+<span class="fc" id="L68">        alkioidenLkm--;</span>
+<span class="fc" id="L69">        return true;</span>
+    }
+
+    public int getAlkioidenLkm() {
+<span class="fc" id="L73">        return alkioidenLkm;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc bfc" id="L78" title="All 2 branches covered.">        if (alkioidenLkm == 0) {</span>
+<span class="fc" id="L79">            return &quot;{}&quot;;</span>
+<span class="fc bfc" id="L80" title="All 2 branches covered.">        } else if (alkioidenLkm == 1) {</span>
+<span class="fc" id="L81">            return &quot;{&quot; + joukko[0] + &quot;}&quot;;</span>
+        } else {
+<span class="fc" id="L83">            String merkkijono = &quot;{&quot;;</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">            for (int i = 0; i &lt; alkioidenLkm - 1; i++) {</span>
+<span class="fc" id="L85">                merkkijono += joukko[i];</span>
+<span class="fc" id="L86">                merkkijono += &quot;, &quot;;</span>
+            }
+<span class="fc" id="L88">            merkkijono += joukko[alkioidenLkm - 1];</span>
+<span class="fc" id="L89">            merkkijono += &quot;}&quot;;</span>
+<span class="fc" id="L90">            return merkkijono;</span>
+        }
+    }
+
+    public int[] getJoukko() {
+<span class="fc bfc" id="L95" title="All 2 branches covered.">        if (alkioidenLkm == 0) {</span>
+<span class="fc" id="L96">            return new int[0];</span>
+        }
+<span class="fc" id="L98">        int[] taulu = new int[alkioidenLkm];</span>
+<span class="fc" id="L99">        kopioiTaulukko(joukko, taulu);</span>
+<span class="fc" id="L100">        return taulu;</span>
+    }
+
+    // PRIVATE METHODS
+    private void kasvataTaulukkoa() {
+<span class="fc" id="L105">        joukko = kopioiTaulukko(joukko, new int[alkioidenLkm + kasvatuskoko]);</span>
+<span class="fc" id="L106">    }</span>
+
+    private int luvunIndeksi(int luku) {
+<span class="fc bfc" id="L109" title="All 2 branches covered.">        for (int i = 0; i &lt; alkioidenLkm; i++) {</span>
+<span class="fc bfc" id="L110" title="All 2 branches covered.">            if (luku == joukko[i]) {</span>
+<span class="fc" id="L111">                return i;</span>
+            }
+        }
+<span class="fc" id="L114">        return -1;</span>
+    }
+
+    private int[] kopioiTaulukko(int[] vanha, int[] uusi) {
+<span class="fc" id="L118">        System.arraycopy(vanha, 0, uusi, 0, alkioidenLkm);</span>
+<span class="fc" id="L119">        return uusi;</span>
+    }
+
+    // STATIC METHODS TRANSFERRED TO INTJOUKKOLASKIN CLASS
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ohtu.intjoukkosovellus.JoukkoOperaatiotTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-04-22T16:09:12" hostname="Piia-MBP-2.Elisa" time="0.003">
+  <properties/>
+  <testcase name="yhdisteTesti" classname="ohtu.intjoukkosovellus.JoukkoOperaatiotTest" time="0.0"/>
+  <testcase name="erotusTesti" classname="ohtu.intjoukkosovellus.JoukkoOperaatiotTest" time="0.0"/>
+  <testcase name="leikkausTesti" classname="ohtu.intjoukkosovellus.JoukkoOperaatiotTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

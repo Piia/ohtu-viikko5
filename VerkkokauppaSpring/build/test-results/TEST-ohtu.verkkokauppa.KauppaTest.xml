@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ohtu.verkkokauppa.KauppaTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2017-04-22T08:37:29" hostname="Piia-MBP-2.Elisa" time="1.056">
+  <properties/>
+  <testcase name="tilisiirronParametritKahdellaSamallaOstoksella" classname="ohtu.verkkokauppa.KauppaTest" time="1.035"/>
+  <testcase name="ostoksenPaatyttyaPankinMetodiaTilisiirtoKutsutaan" classname="ohtu.verkkokauppa.KauppaTest" time="0.004"/>
+  <testcase name="tilisiirronParametritKahdellaEriOstoksella" classname="ohtu.verkkokauppa.KauppaTest" time="0.001"/>
+  <testcase name="tilisiirronParametritKunToinenOstettavaOnLoppu" classname="ohtu.verkkokauppa.KauppaTest" time="0.003"/>
+  <testcase name="ostoksilleKaytetaanOmaaViitetta" classname="ohtu.verkkokauppa.KauppaTest" time="0.003"/>
+  <testcase name="metodiAloitaAsiointiNollaaEdellisetOstokset" classname="ohtu.verkkokauppa.KauppaTest" time="0.005"/>
+  <testcase name="tilisiirronParametritYhdellaOstoksella" classname="ohtu.verkkokauppa.KauppaTest" time="0.001"/>
+  <testcase name="koristaPoistaminen" classname="ohtu.verkkokauppa.KauppaTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
